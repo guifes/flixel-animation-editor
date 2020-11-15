@@ -1,0 +1,5 @@
+<dialog>
+    <hbox>
+        <textfield id="textfield" placeholder="New name..." />
+    </hbox>   
+</dialog>
