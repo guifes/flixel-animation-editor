@@ -1,24 +1,26 @@
-<vbox width="100%" height="100%">
-    <vbox width="100%" height="450">
-        <menubar id="menuBar" width="100%">
-            <menu text="File">
-                <menuitem id="menuNewModel" text="New" />
-                <menuitem id="menuLoadModel" text="Load" />
-                <menuitem id="menuSaveModel" text="Save" />
-                <menuitem id="menuQuit" text="Quit" />
-            </menu>
-        </menubar>
-        <hbox>
-            <label text="Loaded animation file: " />
-            <label id="loadedAnimation" text="" />
-        </hbox>
-        <hbox>
-            <label text="Loaded TexturePacker file: " />
-            <label id="loadedTexturepacker" text="" />
-        </hbox>
-        <button id="loadTexturepacker" text="Load TexturePacker file" />
-    </vbox>
+<box width="100%" height="100%">
     <vbox width="100%">
+        <vbox id="topBar" width="100%" style="background-color: red">
+            <menubar id="menuBar" width="100%">
+                <menu text="File">
+                    <menuitem id="menuNewModel" text="New" />
+                    <menuitem id="menuLoadModel" text="Load" />
+                    <menuitem id="menuSaveModel" text="Save" />
+                    <menuitem id="menuQuit" text="Quit" />
+                </menu>
+            </menubar>
+            <hbox>
+                <label text="Loaded animation file: " />
+                <label id="loadedAnimation" text="" />
+            </hbox>
+            <hbox>
+                <label text="Loaded TexturePacker file: " />
+                <label id="loadedTexturepacker" text="" />
+            </hbox>
+            <button id="loadTexturepacker" text="Load TexturePacker file" />
+        </vbox>
+    </vbox>
+    <vbox id="bottomBar" width="100%" verticalAlign="bottom" style="background-color: yellow">
         <vbox id="animationInfo">
             <hbox>
                 <label text="Current animation: " />
@@ -57,4 +59,4 @@
             </vbox>
         </hbox>
     </vbox>
-</vbox>
+</box>
