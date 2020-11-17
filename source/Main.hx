@@ -2,12 +2,14 @@ package;
 
 import flixel.AnimationEditorState;
 import flixel.FlxGame;
+import haxe.ui.HaxeUIApp;
 import haxe.ui.Toolkit;
 import openfl.display.Sprite;
 import ui.AnimationEditorUI;
 
 class Main extends Sprite
 {
+	var app:HaxeUIApp;
 	var game:FlxGame;
 	var ui:AnimationEditorUI;
 	var editor:AnimationEditor;
@@ -16,18 +18,20 @@ class Main extends Sprite
 	{
 		super();
 
-		Toolkit.init();
+		this.game = new FlxGame(1024, 768, AnimationEditorState);
 
-		ui = new AnimationEditorUI();
+		addChild(game);
 
-		var size = ui.getCanvasSize();
+		var state = AnimationEditorState.shared;
 
-		var game = new FlxGame(size.width, size.height, AnimationEditorState);
+		var container = state.getUIContainer();
 
-		addChild(ui);
+		Toolkit.init({container: container});
 
-		ui.attachGame(game);
+		this.ui = new AnimationEditorUI();
 
-		editor = new AnimationEditor(AnimationEditorState.shared, ui);
+		container.add(this.ui);
+
+		this.editor = new AnimationEditor(state, this.ui);
 	}
 }

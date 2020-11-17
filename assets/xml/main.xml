@@ -1,13 +1,13 @@
-<vbox width="100%" style="background-color: white;">
-    <menubar id="menuBar" width="100%">
-        <menu text="File">
-            <menuitem id="menuNewModel" text="New" />
-            <menuitem id="menuLoadModel" text="Load" />
-            <menuitem id="menuSaveModel" text="Save" />
-            <menuitem id="menuQuit" text="Quit" />
-        </menu>
-    </menubar>
-    <vbox style="background-color: pink;">
+<vbox width="100%" height="100%">
+    <vbox width="100%" height="450">
+        <menubar id="menuBar" width="100%">
+            <menu text="File">
+                <menuitem id="menuNewModel" text="New" />
+                <menuitem id="menuLoadModel" text="Load" />
+                <menuitem id="menuSaveModel" text="Save" />
+                <menuitem id="menuQuit" text="Quit" />
+            </menu>
+        </menubar>
         <hbox>
             <label text="Loaded animation file: " />
             <label id="loadedAnimation" text="" />
@@ -18,43 +18,43 @@
         </hbox>
         <button id="loadTexturepacker" text="Load TexturePacker file" />
     </vbox>
-    <vbox id="flxgame" width="100%" height="300" style="background-color: red;" >
-    </vbox>
-    <vbox id="animationInfo">
+    <vbox width="100%">
+        <vbox id="animationInfo">
+            <hbox>
+                <label text="Current animation: " />
+                <label id="currentAnimation" text="" />
+            </hbox>
+            <hbox>
+                <label text="Frame Rate: " />
+                <slider id="frameRateSlider" max="60" precision="0" pos="30" /><label text="${frameRateSlider.pos}" />
+            </hbox>
+            <checkbox id="loopedCheckBox" text="Looped"  />
+            <checkbox id="flipXCheckBox" text="Flip X"  />
+            <checkbox id="flipYCheckBox" text="Flip Y"  />
+        </vbox>
         <hbox>
-            <label text="Current animation: " />
-            <label id="currentAnimation" text="" />
-        </hbox>
-        <hbox>
-            <label text="Frame Rate: " />
-            <slider id="frameRate" max="60" precision="0" pos="30" /><label text="${frameRate.pos}" />
-        </hbox>
-        <checkbox id="looped" text="Looped"  />
-        <checkbox id="flipX" text="Flip X"  />
-        <checkbox id="flipY" text="Flip Y"  />
-    </vbox>
-    <hbox>
-        <vbox>
-            <listview id="animationList" width="200" height="150" selectedIndex="0">
-                <data>
+            <vbox>
+                <listview id="animationList" width="200" height="150" selectedIndex="0">
+                    <data>
 
-                </data>
-            </listview>
-            <hbox>
-                <button id="addAnimation" text="+ Animation" />
-                <button id="renameAnimation" text="Rename" />
-                <button id="deleteAnimation" text="- Animation" />
-            </hbox>
-        </vbox>
-        <vbox>
-            <listview id="frameList" width="200" height="150" selectedIndex="0">
-                <data>
-                    
-                </data>
-            </listview>
-            <hbox>
-                <button id="deleteFrame" text="Delete" />
-            </hbox>
-        </vbox>
-    </hbox>    
+                    </data>
+                </listview>
+                <hbox>
+                    <button id="addAnimation" text="Add" />
+                    <button id="renameAnimation" text="Rename" />
+                    <button id="deleteAnimation" text="Del" />
+                </hbox>
+            </vbox>
+            <vbox>
+                <listview id="frameList" width="200" height="150" selectedIndex="0">
+                    <data>
+                        
+                    </data>
+                </listview>
+                <hbox>
+                    <button id="deleteFrame" text="Del" />
+                </hbox>
+            </vbox>
+        </hbox>
+    </vbox>
 </vbox>

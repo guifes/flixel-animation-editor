@@ -12,7 +12,7 @@ import flixel.util.FlxSpriteUtil;
 import haxe.Exception;
 import model.Animation;
 
-using guifes.extension.FlxAtlasFramesExtension;
+using guifes.flixel.extension.FlxAtlasFramesExtension;
 
 class AnimationEditorState extends FlxState
 {
@@ -21,6 +21,8 @@ class AnimationEditorState extends FlxState
 	public var delegate(null, default):IAnimationEdit;
 
 	// FlxState
+	var uiContainer:FlxSpriteGroup;
+	var animationContainer:FlxSpriteGroup;
 	var animationSprite:FlxSprite;
 	var atlasGroup:FlxSpriteGroup;
 
@@ -52,8 +54,30 @@ class AnimationEditorState extends FlxState
 
 		animationSprite = new FlxSprite(FlxG.width * 0.5, FlxG.height * 0.5);
 
-		add(animationSprite);
-		add(atlasGroup);
+		uiContainer = new FlxSpriteGroup();
+		animationContainer = new FlxSpriteGroup(0, 100);
+
+		animationContainer.add(atlasGroup);
+		animationContainer.add(animationSprite);
+
+		add(animationContainer);
+		add(uiContainer);
+	}
+
+	override function update(elapsed:Float)
+	{
+		super.update(elapsed);
+
+		if (FlxG.keys.justPressed.UP)
+		{
+			animationContainer.y--;
+			trace(animationContainer.y);
+		}
+		else if (FlxG.keys.justPressed.DOWN)
+		{
+			animationContainer.y++;
+			trace(animationContainer.y);
+		}
 	}
 
 	public function loadTexturePackerFile(path:String)
@@ -98,7 +122,7 @@ class AnimationEditorState extends FlxState
 			atlasGroup.add(bkg);
 			atlasGroup.add(sprite);
 
-			xOffset += sprite.width;
+			xOffset += sprite.width + 1;
 			maxHeight = Math.max(maxHeight, sprite.height);
 		}
 
@@ -106,6 +130,11 @@ class AnimationEditorState extends FlxState
 		animationSprite.setPosition(FlxG.width * 0.5, FlxG.height * 0.5);
 
 		return true;
+	}
+
+	public function getUIContainer()
+	{
+		return uiContainer;
 	}
 
 	public function updateDisplayAnimation(animation:Animation)

@@ -36,7 +36,8 @@
 	<haxelib name="flixel" />
 	<haxelib name="flixel-addons" />
 	<haxelib name="haxeui-core" />
-	<haxelib name="haxeui-openfl" />
+	<!-- <haxelib name="haxeui-openfl" /> -->
+	<haxelib name="haxeui-flixel" />
 	<haxelib name="haxe-utils" />
 	<haxelib name="json2object" />
 	<haxelib name="hxcpp-debug-server" />
