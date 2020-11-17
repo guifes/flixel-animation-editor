@@ -1,6 +1,7 @@
 package;
 
 import flixel.AnimationEditorState;
+import flixel.FlxG;
 import flixel.FlxGame;
 import haxe.ui.HaxeUIApp;
 import haxe.ui.Toolkit;

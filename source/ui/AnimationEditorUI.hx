@@ -55,6 +55,14 @@ class AnimationEditorUI extends VBox
 	// Public //
 	////////////
 
+	public function printStuff()
+	{
+		trace('bottomBar._actualHeight = ${bottomBar._actualHeight}');
+		trace('bottomBar._componentHeight = ${bottomBar._componentHeight}');
+		trace('bottomBar._height = ${bottomBar._height}');
+		trace('topBar._percentHeight = ${topBar._percentHeight}');
+	}
+
 	public function loadTexturePackerFile(path:String)
 	{
 		loadedTexturepacker.text = path;

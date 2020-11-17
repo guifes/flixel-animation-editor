@@ -18,7 +18,7 @@ class AnimationEditorState extends FlxState
 {
 	public static var shared(default, null):AnimationEditorState;
 
-	public var delegate(null, default):IAnimationEdit;
+	public var delegate(null, default):IAnimationEditor;
 
 	// FlxState
 	var uiContainer:FlxSpriteGroup;
@@ -70,13 +70,7 @@ class AnimationEditorState extends FlxState
 
 		if (FlxG.keys.justPressed.UP)
 		{
-			animationContainer.y--;
-			trace(animationContainer.y);
-		}
-		else if (FlxG.keys.justPressed.DOWN)
-		{
-			animationContainer.y++;
-			trace(animationContainer.y);
+			delegate.upPressed();
 		}
 	}
 

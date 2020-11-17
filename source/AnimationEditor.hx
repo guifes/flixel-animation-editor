@@ -28,6 +28,11 @@ class AnimationEditor implements IAnimationEditor
 		this.ui.delegate = this;
 	}
 
+	public function upPressed()
+	{
+		this.ui.printStuff();
+	}
+
 	//////////////////////////
 	// ITexturePackerManage //
 	//////////////////////////

@@ -1,4 +1,4 @@
-<box width="100%" height="100%">
+<vbox width="100%" height="100%">
     <vbox width="100%">
         <vbox id="topBar" width="100%" style="background-color: red">
             <menubar id="menuBar" width="100%">
@@ -20,7 +20,10 @@
             <button id="loadTexturepacker" text="Load TexturePacker file" />
         </vbox>
     </vbox>
-    <vbox id="bottomBar" width="100%" verticalAlign="bottom" style="background-color: yellow">
+    <vbox id="middleBar" width="100%" height="100%" style="background-color: green">
+
+    </vbox>
+    <vbox id="bottomBar" width="100%" style="background-color: yellow">
         <vbox id="animationInfo">
             <hbox>
                 <label text="Current animation: " />
@@ -59,4 +62,4 @@
             </vbox>
         </hbox>
     </vbox>
-</box>
+</vbox>
