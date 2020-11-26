@@ -5,7 +5,7 @@ import model.Animation;
 interface IAnimationEdit
 {
 	function onSelectAnimation(name:String):Animation;
-	function onAddAnimation():String;
+	function onAddAnimation():Void;
 	function onRenameAnimation(oldName:String, newName:String):Void;
 	function onDeleteAnimation(name:String):Void;
 	function onChangeFlipX(name:String, value:Bool):Void;

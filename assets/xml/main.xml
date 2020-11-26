@@ -1,6 +1,6 @@
 <vbox width="100%" height="100%">
     <vbox width="100%">
-        <vbox id="topBar" width="100%" style="background-color: red">
+        <vbox id="topBar" width="100%">
             <menubar id="menuBar" width="100%">
                 <menu text="File">
                     <menuitem id="menuNewModel" text="New" />
@@ -9,22 +9,24 @@
                     <menuitem id="menuQuit" text="Quit" />
                 </menu>
             </menubar>
-            <hbox>
-                <label text="Loaded animation file: " />
-                <label id="loadedAnimation" text="" />
-            </hbox>
-            <hbox>
-                <label text="Loaded TexturePacker file: " />
-                <label id="loadedTexturepacker" text="" />
-            </hbox>
-            <button id="loadTexturepacker" text="Load TexturePacker file" />
+            <vbox style="margin: 10;">
+                <hbox>
+                    <label text="Loaded animation file: " />
+                    <label id="loadedAnimation" text="" />
+                </hbox>
+                <hbox>
+                    <label text="Loaded TexturePacker file: " />
+                    <label id="loadedTexturepacker" text="" />
+                </hbox>
+                <button id="loadTexturepacker" text="Load TexturePacker file" />
+            </vbox>
         </vbox>
     </vbox>
-    <vbox id="middleBar" width="100%" height="100%" style="background-color: green">
+    <vbox id="middleBar" width="100%" height="100%">
 
     </vbox>
-    <vbox id="bottomBar" width="100%" style="background-color: yellow">
-        <vbox id="animationInfo">
+    <vbox id="bottomBar" width="100%" style="margin: 10;">
+        <vbox id="animationInfo" style="padding-bottom: 10;">
             <hbox>
                 <label text="Current animation: " />
                 <label id="currentAnimation" text="" />
@@ -33,9 +35,11 @@
                 <label text="Frame Rate: " />
                 <slider id="frameRateSlider" max="60" precision="0" pos="30" /><label text="${frameRateSlider.pos}" />
             </hbox>
-            <checkbox id="loopedCheckBox" text="Looped"  />
-            <checkbox id="flipXCheckBox" text="Flip X"  />
-            <checkbox id="flipYCheckBox" text="Flip Y"  />
+            <hbox>
+                <checkbox id="loopedCheckBox" text="Looped" />
+                <checkbox id="flipXCheckBox" text="Flip X" />
+                <checkbox id="flipYCheckBox" text="Flip Y" />
+            </hbox>
         </vbox>
         <hbox>
             <vbox>

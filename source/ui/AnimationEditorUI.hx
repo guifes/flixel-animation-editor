@@ -55,14 +55,6 @@ class AnimationEditorUI extends VBox
 	// Public //
 	////////////
 
-	public function printStuff()
-	{
-		trace('bottomBar._actualHeight = ${bottomBar._actualHeight}');
-		trace('bottomBar._componentHeight = ${bottomBar._componentHeight}');
-		trace('bottomBar._height = ${bottomBar._height}');
-		trace('topBar._percentHeight = ${topBar._percentHeight}');
-	}
-
 	public function loadTexturePackerFile(path:String)
 	{
 		loadedTexturepacker.text = path;
@@ -76,8 +68,15 @@ class AnimationEditorUI extends VBox
 		return animationList.selectedItem.text;
 	}
 
-	public function setSelectedAnimation(name:String, animation:Animation)
+	public function addNewAnimation(name:String, animation:Animation)
 	{
+		var newItem = {
+			text: name
+		};
+
+		animationList.dataSource.add(newItem);
+		animationList.selectedIndex = animationList.dataSource.indexOf(newItem);
+
 		selectAnimation(name, animation);
 	}
 
@@ -93,6 +92,7 @@ class AnimationEditorUI extends VBox
 		loadedTexturepacker.text = model.texturePackerJson;
 
 		animationList.dataSource.clear();
+		frameList.dataSource.clear();
 
 		var first:Animation = null;
 
@@ -105,6 +105,9 @@ class AnimationEditorUI extends VBox
 				text: name
 			});
 		}
+
+		if (first == null)
+			return;
 
 		selectAnimation(animationList.dataSource.get(0).text, first);
 	}
@@ -159,9 +162,7 @@ class AnimationEditorUI extends VBox
 
 	function onAddAnimationClicked(event:UIEvent)
 	{
-		animationList.dataSource.add({
-			text: delegate.onAddAnimation()
-		});
+		delegate.onAddAnimation();
 	}
 
 	function onRenameAnimationClicked(event:UIEvent)

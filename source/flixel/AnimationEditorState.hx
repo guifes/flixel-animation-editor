@@ -10,6 +10,7 @@ import flixel.group.FlxSpriteGroup;
 import flixel.util.FlxColor;
 import flixel.util.FlxSpriteUtil;
 import haxe.Exception;
+import haxe.ui.geom.Rectangle;
 import model.Animation;
 
 using guifes.flixel.extension.FlxAtlasFramesExtension;
@@ -17,8 +18,9 @@ using guifes.flixel.extension.FlxAtlasFramesExtension;
 class AnimationEditorState extends FlxState
 {
 	public static var shared(default, null):AnimationEditorState;
+	public static var frame(default, null):Rectangle = new Rectangle(0, 150, 1024, 768 - 150 - 350);
 
-	public var delegate(null, default):IAnimationEditor;
+	public var delegate(null, default):IAnimationEdit;
 
 	// FlxState
 	var uiContainer:FlxSpriteGroup;
@@ -52,26 +54,21 @@ class AnimationEditorState extends FlxState
 
 		atlasGroup = new FlxSpriteGroup(0, 0);
 
-		animationSprite = new FlxSprite(FlxG.width * 0.5, FlxG.height * 0.5);
+		var backgroundSprite = new FlxSprite(0, 0);
+		backgroundSprite.makeGraphic(cast frame.width, cast frame.height, FlxColor.RED);
+
+		animationSprite = new FlxSprite(frame.width * 0.5, frame.height * 0.5);
 
 		uiContainer = new FlxSpriteGroup();
-		animationContainer = new FlxSpriteGroup(0, 100);
+		animationContainer = new FlxSpriteGroup(0, frame.top);
+		animationContainer.color = FlxColor.RED;
 
+		animationContainer.add(backgroundSprite);
 		animationContainer.add(atlasGroup);
 		animationContainer.add(animationSprite);
 
 		add(animationContainer);
 		add(uiContainer);
-	}
-
-	override function update(elapsed:Float)
-	{
-		super.update(elapsed);
-
-		if (FlxG.keys.justPressed.UP)
-		{
-			delegate.upPressed();
-		}
 	}
 
 	public function loadTexturePackerFile(path:String)
@@ -121,7 +118,7 @@ class AnimationEditorState extends FlxState
 		}
 
 		animationSprite.setFrames(atlas);
-		animationSprite.setPosition(FlxG.width * 0.5, FlxG.height * 0.5);
+		animationSprite.setPosition(frame.width * 0.5, frame.height * 0.5);
 
 		return true;
 	}

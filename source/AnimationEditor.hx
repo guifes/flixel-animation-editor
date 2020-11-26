@@ -28,11 +28,6 @@ class AnimationEditor implements IAnimationEditor
 		this.ui.delegate = this;
 	}
 
-	public function upPressed()
-	{
-		this.ui.printStuff();
-	}
-
 	//////////////////////////
 	// ITexturePackerManage //
 	//////////////////////////
@@ -51,7 +46,11 @@ class AnimationEditor implements IAnimationEditor
 
 	public function onNewAnimation()
 	{
-		this.model = new Model();
+		var newModel = new Model();
+
+		newModel.texturePackerJson = this.model.texturePackerJson;
+
+		this.model = newModel;
 
 		this.state.loadTexturePackerFile(this.model.texturePackerJson);
 		this.ui.loadModel(this.model);
@@ -124,9 +123,7 @@ class AnimationEditor implements IAnimationEditor
 		var animation = new Animation();
 		model.animations.set(name, animation);
 
-		this.ui.setSelectedAnimation(name, animation);
-
-		return name;
+		this.ui.addNewAnimation(name, animation);
 	}
 
 	public function onRenameAnimation(oldName:String, newName:String)
