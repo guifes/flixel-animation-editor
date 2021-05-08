@@ -33,7 +33,7 @@
             </hbox>
             <hbox>
                 <label text="Frame Rate: " />
-                <slider id="frameRateSlider" max="60" precision="0" pos="30" /><label text="${frameRateSlider.pos}" />
+                <slider id="frameRateSlider" max="60" precision="0" pos="30" /><label text="${frameRateSlider.pos}" verticalAlign="center" />
             </hbox>
             <hbox>
                 <checkbox id="loopedCheckBox" text="Looped" />
