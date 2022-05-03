@@ -1,6 +1,6 @@
 package;
 
-interface IEditorManage
+interface IEditorManager
 {
 	function onExit():Void;
 }

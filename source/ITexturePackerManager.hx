@@ -1,6 +1,6 @@
 package;
 
-interface ITexturePackerManage
+interface ITexturePackerManager
 {
 	function onLoadTexturePackerFile(path:String):Void;
 }

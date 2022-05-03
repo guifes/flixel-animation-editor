@@ -3,8 +3,8 @@ package ui;
 import haxe.ui.components.Button;
 import haxe.ui.components.CheckBox;
 import haxe.ui.components.Label;
+import haxe.ui.containers.Box;
 import haxe.ui.containers.ListView;
-import haxe.ui.containers.VBox;
 import haxe.ui.containers.menus.MenuBar;
 import haxe.ui.events.UIEvent;
 import lime.ui.FileDialog;
@@ -16,7 +16,7 @@ import openfl.display.Sprite;
 using tink.CoreApi;
 
 @:build(haxe.ui.macros.ComponentMacros.build("assets/xml/main.xml"))
-class AnimationEditorUI extends VBox
+class AnimationEditorUI extends Box
 {
 	public var delegate(null, default):IAnimationEditor;
 
@@ -46,28 +46,15 @@ class AnimationEditorUI extends VBox
 		renameAnimation.onClick = onRenameAnimationClicked;
 		deleteAnimation.onClick = onDeleteAnimationClicked;
 		deleteFrame.onClick = onDeleteFrameClicked;
-		flipX.onChange = onFlipXChanged;
-		flipY.onChange = onFlipYChanged;
-		looped.onChange = onLoopedChanged;
-		frameRate.onChange = onFrameRateChanged;
+		flipXCheckBox.onChange = onFlipXChanged;
+		flipYCheckBox.onChange = onFlipYChanged;
+		loopedCheckBox.onChange = onLoopedChanged;
+		frameRateSlider.onChange = onFrameRateChanged;
 	}
 
 	////////////
 	// Public //
 	////////////
-
-	public function attachGame(game:Sprite)
-	{
-		flxgame.addChild(game);
-	}
-
-	public function getCanvasSize():{width:Int, height:Int}
-	{
-		return {
-			width: cast flxgame.width,
-			height: cast flxgame.height
-		};
-	}
 
 	public function loadTexturePackerFile(path:String)
 	{
@@ -123,10 +110,10 @@ class AnimationEditorUI extends VBox
 	{
 		currentAnimation.text = name;
 
-		flipX.selected = animation.flipX;
-		flipY.selected = animation.flipY;
-		looped.selected = animation.looped;
-		frameRate.value = animation.frameRate;
+		flipXCheckBox.selected = animation.flipX;
+		flipYCheckBox.selected = animation.flipY;
+		loopedCheckBox.selected = animation.looped;
+		frameRateSlider.value = animation.frameRate;
 
 		frameList.dataSource.clear();
 
@@ -232,7 +219,7 @@ class AnimationEditorUI extends VBox
 		if (animationList.selectedItem == null)
 			return;
 
-		delegate.onChangeFlipX(animationList.selectedItem.text, flipX.selected);
+		delegate.onChangeFlipX(animationList.selectedItem.text, flipXCheckBox.selected);
 	}
 
 	function onFlipYChanged(event:UIEvent)
@@ -240,7 +227,7 @@ class AnimationEditorUI extends VBox
 		if (animationList.selectedItem == null)
 			return;
 
-		delegate.onChangeFlipY(animationList.selectedItem.text, flipY.selected);
+		delegate.onChangeFlipY(animationList.selectedItem.text, flipYCheckBox.selected);
 	}
 
 	function onLoopedChanged(event:UIEvent)
@@ -248,7 +235,7 @@ class AnimationEditorUI extends VBox
 		if (animationList.selectedItem == null)
 			return;
 
-		delegate.onChangeLooped(animationList.selectedItem.text, looped.selected);
+		delegate.onChangeLooped(animationList.selectedItem.text, loopedCheckBox.selected);
 	}
 
 	function onFrameRateChanged(event:UIEvent)
@@ -256,6 +243,6 @@ class AnimationEditorUI extends VBox
 		if (animationList.selectedItem == null)
 			return;
 
-		delegate.onChangeFrameRate(animationList.selectedItem.text, frameRate.value);
+		delegate.onChangeFrameRate(animationList.selectedItem.text, frameRateSlider.value);
 	}
 }

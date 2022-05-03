@@ -1,6 +1,6 @@
 package;
 
-interface IAnimationManage
+interface IAnimationManager
 {
 	function onNewAnimation():Void;
 	function onSaveAnimation(path:String):Void;

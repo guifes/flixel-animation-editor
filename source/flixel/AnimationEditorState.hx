@@ -12,7 +12,7 @@ import flixel.util.FlxSpriteUtil;
 import haxe.Exception;
 import model.Animation;
 
-using guifes.extension.FlxAtlasFramesExtension;
+using guifes.flixel.extension.FlxAtlasFramesExtension;
 
 class AnimationEditorState extends FlxState
 {
@@ -46,7 +46,7 @@ class AnimationEditorState extends FlxState
 
 		FlxG.plugins.add(new FlxMouseControl());
 
-		bgColor = FlxColor.GRAY;
+		bgColor = FlxColor.PINK;
 
 		atlasGroup = new FlxSpriteGroup(0, 0);
 

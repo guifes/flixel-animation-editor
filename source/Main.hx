@@ -19,14 +19,10 @@ class Main extends Sprite
 		Toolkit.init();
 
 		ui = new AnimationEditorUI();
+		game = new FlxGame(cast stage.width, cast stage.height, AnimationEditorState);
 
-		var size = ui.getCanvasSize();
-
-		var game = new FlxGame(size.width, size.height, AnimationEditorState);
-
+		addChild(game);
 		addChild(ui);
-
-		ui.attachGame(game);
 
 		editor = new AnimationEditor(AnimationEditorState.shared, ui);
 	}
